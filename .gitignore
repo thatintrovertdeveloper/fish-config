@@ -3,3 +3,7 @@ secrets.fish
 
 # Ignore system-specific fish variables
 fish_variables
+
+# Machine-specific leftovers and backups
+*.backup
+conf.d.backup

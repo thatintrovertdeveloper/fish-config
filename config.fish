@@ -1,5 +1,7 @@
 if status is-interactive
-    # Commands to run in interactive sessions can go here
+    # Prompt and navigation helpers only need to load in interactive shells
+    starship init fish | source
+    zoxide init fish | source
 end
 
 # Source sensitive API keys from separate file (not tracked in git)
@@ -7,16 +9,15 @@ if test -f ~/.config/fish/secrets.fish
     source ~/.config/fish/secrets.fish
 end
 
-set -x EDITOR nvim
+set -gx EDITOR nvim
 
+# Homebrew (Linux); skip silently on machines without it
+if test -f /home/linuxbrew/.linuxbrew/bin/brew
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+end
 
-# Initialize Starship prompt
-starship init fish | source
-eval "$(/opt/homebrew/bin/brew shellenv)"
-zoxide init fish | source
-
-# Add Bun global bin directory to PATH for Gemini CLI
-fish_add_path "/Users/richardoliverbray/.bun/bin"
+# Add Bun global bin directory to PATH (skipped if it doesn't exist)
+fish_add_path "$HOME/.bun/bin"
 alias vim='nvim'
 alias vi='nvim'
 alias claude-squad='cs'
