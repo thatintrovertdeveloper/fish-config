@@ -11,6 +11,9 @@ if test -f ~/.config/fish/secrets.fish
     source ~/.config/fish/secrets.fish
 end
 
+# Theme
+fish_config theme choose "Dracula Official"
+
 set -gx EDITOR nvim
 
 # Homebrew (Linux); skip silently on machines without it
