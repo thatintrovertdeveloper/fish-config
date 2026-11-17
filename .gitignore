@@ -1,5 +1,6 @@
 # Ignore sensitive files
 secrets.fish
+__pycache__
 
 # Ignore system-specific fish variables
 fish_variables
@@ -7,3 +8,6 @@ fish_variables
 # Machine-specific leftovers and backups
 *.backup
 conf.d.backup
+
+# Agent skills folders
+.agents/
